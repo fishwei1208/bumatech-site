@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>布碼科技 Buma Tech｜專業服飾印製工廠</title>
+<meta name="description" content="布碼科技提供 DTG 數位印花、DTF 熱轉印、網版印刷、熱升華等專業服飾印製，最低 1 件起印，台灣工廠直營。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root{
+  --blue:#1A4FBD;--blue2:#2d5fc8;--blue3:#0f3a96;
+  --blueDim:rgba(26,79,189,.10);--blueGlow:rgba(26,79,189,.22);
+  --g1:#f5f7fc;--g2:#e8edf8;--g3:#c4cde8;
+  --t1:#1a1e2e;--t2:#444b66;--t3:#7b83a0;
+  --white:#fff;
+  --shadow:0 2px 14px rgba(26,79,189,.09);
+  --shadowMd:0 6px 28px rgba(26,79,189,.14);
+  --font:'Inter','Noto Sans TC',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);color:var(--t1);background:var(--white);line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block;object-fit:cover}
+.container{max-width:1120px;margin:0 auto;padding:0 28px}
+section{padding:96px 0}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:900;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--g2);transition:box-shadow .3s}
+nav.scrolled{box-shadow:var(--shadow)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:68px;padding:0 32px}
+.logo-wrap{display:flex;align-items:center;gap:10px}
+.logo-img{height:40px;width:auto}
+.logo-text{font-weight:800;font-size:1.15rem;color:var(--blue)}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{font-size:.92rem;font-weight:500;color:var(--t2);transition:color .2s}
+.nav-links a:hover{color:var(--blue)}
+.nav-divider{width:1px;height:20px;background:var(--g3);align-self:center}
+.nav-cta{background:var(--blue);color:#fff;padding:9px 22px;border-radius:8px;font-weight:600;font-size:.9rem;transition:background .2s}
+.nav-cta:hover{background:var(--blue2)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.hamburger span{display:block;width:24px;height:2px;background:var(--t1);border-radius:2px;transition:.3s}
+.mobile-menu{display:none;position:fixed;top:68px;left:0;right:0;background:#fff;border-bottom:1px solid var(--g2);padding:24px 32px;z-index:899;box-shadow:var(--shadowMd)}
+.mobile-menu.open{display:block}
+.mobile-menu ul{list-style:none;display:flex;flex-direction:column;gap:18px}
+.mobile-menu a{font-size:1.05rem;font-weight:500;color:var(--t1)}
+
+/* HERO */
+#hero{padding:0;margin-top:68px;position:relative;overflow:hidden;min-height:88vh;display:flex;align-items:center}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(105deg,rgba(10,25,70,.84) 0%,rgba(15,58,150,.58) 50%,rgba(26,79,189,.28) 100%)}
+.hero-content{position:relative;z-index:1;max-width:680px;padding:80px 60px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:#fff;padding:6px 16px;border-radius:100px;font-size:.82rem;font-weight:600;letter-spacing:.06em;margin-bottom:24px;backdrop-filter:blur(4px)}
+.hero-badge i{color:#7dd3fc}
+h1{font-size:clamp(2.2rem,5vw,3.6rem);font-weight:900;color:#fff;line-height:1.15;margin-bottom:20px}
+h1 span{color:#7dd3fc}
+.hero-sub{font-size:1.1rem;color:rgba(255,255,255,.82);margin-bottom:36px;max-width:500px;line-height:1.75}
+.hero-actions{display:flex;gap:16px;flex-wrap:wrap}
+.btn-primary{background:#fff;color:var(--blue);padding:14px 32px;border-radius:10px;font-weight:700;font-size:1rem;transition:.2s;display:inline-flex;align-items:center;gap:8px}
+.btn-primary:hover{background:var(--g1);transform:translateY(-1px)}
+.btn-outline{border:2px solid rgba(255,255,255,.6);color:#fff;padding:14px 32px;border-radius:10px;font-weight:600;font-size:1rem;transition:.2s;display:inline-flex;align-items:center;gap:8px}
+.btn-outline:hover{background:rgba(255,255,255,.12)}
+.hero-cats{display:flex;gap:20px;margin-top:52px;flex-wrap:wrap}
+.hero-cat{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:14px;padding:18px 28px;display:flex;align-items:center;gap:14px;backdrop-filter:blur(6px);transition:.25s;cursor:pointer}
+.hero-cat:hover{background:rgba(255,255,255,.2)}
+.hero-cat-icon{width:46px;height:46px;background:rgba(255,255,255,.2);border-radius:10px;display:flex;align-items:center;justify-content:center}
+.hero-cat-icon i{color:#fff;font-size:1.3rem}
+.hero-cat-text{text-align:left}
+.hero-cat-name{color:#fff;font-weight:700;font-size:1rem;line-height:1.2}
+.hero-cat-sub{color:rgba(255,255,255,.65);font-size:.78rem;margin-top:2px}
+
+/* SECTION COMMON */
+.section-tag{display:inline-block;background:var(--blueDim);color:var(--blue);padding:4px 14px;border-radius:100px;font-size:.78rem;font-weight:700;letter-spacing:.06em;margin-bottom:12px}
+.section-title{font-size:clamp(1.7rem,3.5vw,2.4rem);font-weight:900;color:var(--t1);margin-bottom:12px}
+.section-sub{font-size:1rem;color:var(--t3);max-width:560px;margin:0 auto 52px}
+.text-center{text-align:center}
+
+
+/* CLOTHING SECTION */
+#clothing{background:var(--g1)}
+.clothing-tabs{display:flex;gap:10px;margin-bottom:40px;flex-wrap:wrap}
+.tab-btn{padding:10px 22px;border-radius:8px;border:2px solid var(--g2);background:#fff;color:var(--t2);font-weight:600;font-size:.88rem;cursor:pointer;transition:.2s;font-family:var(--font)}
+.tab-btn.active,.tab-btn:hover{border-color:var(--blue);background:var(--blue);color:#fff}
+.clothing-content{display:none}
+.clothing-content.active{display:block}
+
+/* Brand tab logos */
+.brand-tabs{display:flex;gap:12px;margin-bottom:40px;flex-wrap:wrap}
+.brand-tab{width:140px;height:68px;border-radius:12px;border:2px solid var(--g2);background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:8px 12px;transition:.2s;flex-shrink:0;position:relative;overflow:hidden}
+.brand-tab:hover{border-color:var(--blue);box-shadow:0 0 0 3px var(--blueDim)}
+.brand-tab.active{border-color:var(--blue);box-shadow:0 0 0 3px var(--blueDim);background:var(--g1)}
+.brand-tab img{max-width:100%;max-height:48px;object-fit:contain;display:block}
+.brand-tab-text{font-weight:800;font-size:.78rem;color:var(--t1);text-align:center;line-height:1.3}
+.brand-tab-custom{font-size:.78rem;font-weight:700;color:var(--t2);text-align:center;line-height:1.4}
+
+/* Brand content */
+.brand-content{display:none}
+.brand-content.active{display:block}
+
+/* Brand list — compact single-line */
+.brand-list{background:#fff;border-radius:12px;border:1px solid var(--g2);overflow:hidden}
+.brand-list-item{display:flex;align-items:center;gap:10px;padding:10px 16px;border-bottom:1px solid var(--g2)}
+.brand-list-item:last-child{border-bottom:none}
+.brand-list-item i{color:var(--blue);width:14px;flex-shrink:0;font-size:.78rem}
+.brand-list-item .name{font-weight:600;color:var(--t1);font-size:.88rem;flex:1}
+.brand-list-item .spec{color:var(--t3);font-size:.76rem;white-space:nowrap;text-align:right}
+
+/* Print methods accordion */
+.method-accordion{display:flex;flex-direction:column;gap:8px}
+.method-item{background:#fff;border-radius:12px;border:1px solid var(--g2);overflow:hidden}
+.method-header{display:flex;align-items:center;gap:14px;padding:16px 20px;cursor:pointer;transition:background .15s;user-select:none}
+.method-header:hover{background:var(--g1)}
+.method-item.open .method-header{background:var(--g1)}
+.method-hicon{width:40px;height:40px;background:var(--blueDim);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.method-hicon i{color:var(--blue);font-size:1rem}
+.method-hname{font-weight:700;font-size:.98rem;color:var(--t1);flex:1}
+.method-htags{display:flex;gap:5px;flex-wrap:wrap}
+.method-htag{background:var(--blueDim);color:var(--blue);padding:2px 8px;border-radius:100px;font-size:.68rem;font-weight:600}
+.method-harrow{color:var(--t3);transition:transform .25s;font-size:.82rem;flex-shrink:0}
+.method-item.open .method-harrow{transform:rotate(180deg)}
+.method-body{display:none;padding:0 20px 18px 74px;font-size:.88rem;color:var(--t2);line-height:1.75}
+.method-item.open .method-body{display:block}
+
+/* Size chart (短T 尺寸顏色表) */
+.size-chart{margin-top:28px;background:#fff;border-radius:14px;border:2px solid var(--g2);padding:18px 20px}
+.size-chart-title{font-size:.82rem;font-weight:700;color:var(--t2);margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.size-chart-title i{color:var(--blue)}
+.size-chart table{width:100%;border-collapse:collapse;font-size:.78rem}
+.size-chart th{background:var(--g1);color:var(--t2);font-weight:700;padding:6px 10px;text-align:center;border:1px solid var(--g2)}
+.size-chart td{padding:6px 10px;text-align:center;border:1px solid var(--g2);color:var(--t2)}
+.size-chart td:first-child{text-align:left;font-weight:600;color:var(--t1)}
+.size-chart .note{font-size:.74rem;color:var(--t3);margin-top:8px}
+.size-chart .cs-note{font-size:.8rem;color:var(--t3);margin-top:12px;display:flex;align-items:center;gap:6px}
+.size-chart .cs-note i{color:var(--blue)}
+
+/* 衣服訂製快速流程 */
+#quick-steps{padding:44px 0;background:#fff;border-bottom:1px solid var(--g2)}
+.qs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.qs-card{background:var(--g1);border-radius:16px;padding:28px 14px;text-align:center;position:relative}
+.qs-card:not(:last-child)::after{content:'›';position:absolute;right:-8px;top:50%;transform:translateY(-50%);font-size:1.6rem;color:var(--g3);z-index:1}
+.qs-num{width:32px;height:32px;background:linear-gradient(135deg,var(--blue),var(--blue2));border-radius:50%;color:#fff;font-size:.85rem;font-weight:900;display:flex;align-items:center;justify-content:center;margin:0 auto 10px}
+.qs-icon{font-size:1.5rem;color:var(--blue);margin-bottom:8px}
+.qs-label{font-size:.95rem;font-weight:800;color:var(--t1);margin-bottom:10px}
+.qs-chips{display:flex;flex-wrap:wrap;justify-content:center;gap:4px;margin-bottom:6px}
+.qs-chips span{background:#fff;border:1px solid var(--g2);border-radius:5px;padding:2px 8px;font-size:.7rem;color:var(--t2);font-weight:500}
+.qs-chips .more{background:var(--blueDim);color:var(--blue);border-color:transparent;font-weight:700}
+.qs-best{font-size:.8rem;font-weight:700;color:var(--blue);margin-bottom:4px;display:flex;align-items:center;justify-content:center;gap:4px}
+.qs-best .badge{background:var(--blue);color:#fff;font-size:.62rem;padding:1px 6px;border-radius:4px;font-weight:700}
+.qs-other{font-size:.72rem;color:var(--t3);line-height:1.6}
+.qs-big{font-size:1.9rem;font-weight:900;color:var(--blue);line-height:1;margin-bottom:4px}
+
+/* Print methods cards */
+.methods-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px}
+.method-card{background:#fff;border-radius:16px;border:1px solid var(--g2);padding:28px;box-shadow:var(--shadow);transition:.3s}
+.method-card:hover{transform:translateY(-4px);box-shadow:var(--shadowMd)}
+.method-img-placeholder{width:100%;height:180px;background:linear-gradient(135deg,var(--g2),var(--g3));border-radius:12px;margin-bottom:20px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.method-img-placeholder::after{content:'圖片更新中';color:var(--t3);font-size:.82rem;font-weight:500}
+.method-icon-badge{position:absolute;top:12px;left:12px;background:rgba(255,255,255,.9);border-radius:8px;width:36px;height:36px;display:flex;align-items:center;justify-content:center}
+.method-icon-badge i{color:var(--blue);font-size:.95rem}
+.method-card h3{font-size:1.05rem;font-weight:700;margin-bottom:8px}
+.method-card p{font-size:.88rem;color:var(--t3);line-height:1.65}
+.method-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:14px}
+.method-tag{background:var(--blueDim);color:var(--blue);padding:3px 10px;border-radius:100px;font-size:.72rem;font-weight:600}
+
+
+/* PROCESS */
+#process{background:var(--g1)}
+.process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:52px;position:relative}
+.process-steps::before{content:'';position:absolute;top:36px;left:12.5%;right:12.5%;height:2px;background:linear-gradient(90deg,var(--blue),var(--blue2));z-index:0}
+.step{text-align:center;position:relative;z-index:1;padding:0 12px}
+.step-num{width:72px;height:72px;background:linear-gradient(135deg,var(--blue),var(--blue2));border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.3rem;font-weight:900;margin:0 auto 16px;box-shadow:0 4px 20px var(--blueGlow)}
+.step h4{font-size:.95rem;font-weight:700;margin-bottom:6px}
+.step p{font-size:.82rem;color:var(--t3);line-height:1.6}
+
+/* WHY */
+#why{background:var(--white)}
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.why-img-wrap{position:relative}
+.why-img{width:100%;border-radius:20px;object-fit:cover;box-shadow:var(--shadowMd);max-height:480px}
+.why-badge{position:absolute;bottom:28px;left:-24px;background:#fff;border-radius:14px;padding:14px 20px;box-shadow:var(--shadowMd);display:flex;align-items:center;gap:12px}
+.why-badge-icon{width:44px;height:44px;background:linear-gradient(135deg,var(--blue),var(--blue2));border-radius:10px;display:flex;align-items:center;justify-content:center}
+.why-badge-icon i{color:#fff;font-size:1.1rem}
+.why-badge-num{font-size:1.3rem;font-weight:900;color:var(--blue);line-height:1.2}
+.why-badge-label{font-size:.75rem;color:var(--t3)}
+.why-points{display:flex;flex-direction:column;gap:22px;margin-top:32px}
+.why-item{display:flex;gap:16px;align-items:flex-start}
+.why-icon{width:48px;height:48px;background:var(--blueDim);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.why-icon i{color:var(--blue);font-size:1.1rem}
+.why-item h4{font-size:1rem;font-weight:700;margin-bottom:4px}
+.why-item p{font-size:.88rem;color:var(--t3);line-height:1.65}
+
+/* FAQ */
+#faq{background:var(--g1)}
+.faq-list{max-width:760px;margin:52px auto 0;display:flex;flex-direction:column;gap:12px}
+.faq-item{background:#fff;border-radius:14px;border:1px solid var(--g2);overflow:hidden}
+.faq-q{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;cursor:pointer;font-weight:600;font-size:.95rem;gap:12px}
+.faq-q i{color:var(--blue);transition:transform .3s;flex-shrink:0}
+.faq-item.open .faq-q i{transform:rotate(45deg)}
+.faq-a{display:none;padding:0 24px 20px;font-size:.9rem;color:var(--t2);line-height:1.75}
+.faq-item.open .faq-a{display:block}
+
+/* CONTACT */
+#contact{background:linear-gradient(135deg,var(--blue3) 0%,var(--blue) 60%,var(--blue2) 100%)}
+.contact-inner{max-width:640px;margin:0 auto;text-align:center}
+.contact-inner h2{font-size:clamp(1.7rem,3vw,2.4rem);font-weight:900;color:#fff;margin-bottom:16px}
+.contact-inner p{color:rgba(255,255,255,.82);font-size:1rem;line-height:1.8;margin-bottom:48px}
+.contact-cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:24px}
+.contact-card{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);border-radius:14px;padding:14px 16px;text-align:center;transition:.2s;backdrop-filter:blur(6px);display:flex;align-items:center;gap:12px}
+.contact-card:hover{background:rgba(255,255,255,.2)}
+.contact-card-icon{width:36px;height:36px;background:rgba(255,255,255,.2);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.contact-card-icon i{color:#fff;font-size:1rem}
+.contact-card-body{text-align:left;flex:1}
+.contact-card h4{color:#fff;font-weight:700;margin-bottom:2px;font-size:.88rem}
+.contact-card p{color:rgba(255,255,255,.65);font-size:.76rem;margin:0}
+.contact-card span{color:rgba(255,255,255,.9);font-size:.78rem;font-weight:600}
+.contact-note{color:rgba(255,255,255,.6);font-size:.8rem}
+.contact-info{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:24px}
+.contact-info-item{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:12px;padding:14px 18px;text-align:left}
+.contact-info-item i{color:rgba(255,255,255,.6);margin-right:6px;font-size:.82rem}
+.contact-info-label{font-size:.72rem;font-weight:700;color:rgba(255,255,255,.55);letter-spacing:.05em;margin-bottom:6px;text-transform:uppercase}
+.contact-info-val{font-size:.85rem;color:#fff;font-weight:600;line-height:1.6}
+.contact-info-sub{font-size:.72rem;color:rgba(255,255,255,.55);margin-top:3px}
+
+/* FOOTER */
+footer{background:var(--t1);color:rgba(255,255,255,.7);padding:64px 0 32px}
+.footer-inner{display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.footer-brand p{font-size:.88rem;line-height:1.75;color:rgba(255,255,255,.55);max-width:280px;margin-top:14px}
+.footer-logo-img{height:36px;width:auto;filter:brightness(0) invert(1)}
+.footer-social{display:flex;gap:12px;margin-top:20px}
+.social-btn{width:38px;height:38px;background:rgba(255,255,255,.08);border-radius:8px;display:flex;align-items:center;justify-content:center;transition:.2s}
+.social-btn:hover{background:var(--blue)}
+.social-btn i{color:rgba(255,255,255,.7);font-size:.9rem}
+.footer-col h5{color:#fff;font-weight:700;font-size:.88rem;letter-spacing:.04em;margin-bottom:16px}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer-col ul li a{font-size:.85rem;color:rgba(255,255,255,.5);transition:.2s}
+.footer-col ul li a:hover{color:#fff}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:28px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.footer-bottom p{font-size:.8rem;color:rgba(255,255,255,.35)}
+
+/* FLOAT */
+.float-btns{position:fixed;bottom:32px;right:28px;display:flex;flex-direction:column;gap:12px;z-index:800}
+.float-btn{width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(0,0,0,.22);transition:.2s;font-size:1.4rem}
+.float-btn:hover{transform:scale(1.1)}
+.float-line{background:#06c755;color:#fff}
+.float-fb{background:#0866ff;color:#fff}
+
+/* FADE */
+.fade-up{opacity:0;transform:translateY(28px);transition:opacity .6s ease,transform .6s ease}
+.fade-up.visible{opacity:1;transform:none}
+
+/* RESPONSIVE */
+@media(max-width:960px){
+  .nav-links,.nav-divider,.nav-cta{display:none}
+  .hamburger{display:flex}
+  .hero-content{padding:60px 28px}
+  .why-grid{grid-template-columns:1fr}
+  .why-badge{left:0}
+  .footer-inner{grid-template-columns:1fr 1fr}
+  .process-steps{grid-template-columns:1fr 1fr;gap:32px}
+  .process-steps::before{display:none}
+  .contact-cards{grid-template-columns:1fr}
+  .contact-info{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  .hero-cats{flex-direction:column;gap:12px}
+  .hero-cat{padding:14px 20px}
+  .clothing-tabs{gap:8px}
+  .tab-btn{font-size:.82rem;padding:8px 16px}
+  .methods-cards{grid-template-columns:1fr}
+  .footer-inner{grid-template-columns:1fr}
+  .process-steps{grid-template-columns:1fr}
+
+  /* 手機版品牌列表 */
+  .brand-list-item .spec{display:none}
+  .method-body{padding-left:20px}
+
+  /* 手機版快速流程 — 三欄一屏 */
+  .qs-grid{gap:6px}
+  .qs-card{padding:16px 8px;border-radius:12px}
+  .qs-card:not(:last-child)::after{right:-5px;font-size:1.1rem}
+  .qs-num{width:26px;height:26px;font-size:.75rem;margin-bottom:7px}
+  .qs-icon{font-size:1.1rem;margin-bottom:6px}
+  .qs-label{font-size:.78rem;margin-bottom:7px}
+  .qs-chips span{font-size:.6rem;padding:1px 5px}
+  .qs-best{font-size:.7rem;gap:3px}
+  .qs-best .badge{font-size:.55rem;padding:0 4px}
+  .qs-other{font-size:.64rem}
+  .qs-big{font-size:1.5rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#" class="logo-wrap" style="text-decoration:none">
+      <img src="logo.png" alt="布碼科技 Buma Tech" class="logo-img">
+      <span class="logo-text">布碼科技</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#clothing">服飾訂製</a></li>
+      <div class="nav-divider"></div>
+      <li><a href="#process">流程</a></li>
+      <li><a href="#faq">常見問題</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">立即詢價</a>
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <ul>
+    <li><a href="#clothing">服飾訂製</a></li>
+    <li><a href="#process">流程</a></li>
+    <li><a href="#faq">常見問題</a></li>
+    <li><a href="#contact">立即詢價</a></li>
+  </ul>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"><img src="factory-tshirt.jpg" alt="布碼科技工廠"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content fade-up">
+    <div class="hero-badge"><i class="fas fa-industry"></i> 台灣工廠直營</div>
+    <h1>客製化服飾訂製<br><span>一件也能實現！</span></h1>
+    <p class="hero-sub">台灣工廠直營，T恤、Polo衫、連帽衫多樣款式，搭配 DTF・DTG・網版・熱升華全方位印製直擊出貨。</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary"><i class="fas fa-file-invoice"></i> 快速詢價</a>
+    </div>
+    <div class="hero-cats">
+      <a href="#clothing" class="hero-cat">
+        <div class="hero-cat-icon"><i class="fas fa-tshirt"></i></div>
+        <div class="hero-cat-text">
+          <div class="hero-cat-name">全系列服飾品牌供應</div>
+          <div class="hero-cat-sub">Gildan · Printstar · United Athle 等</div>
+        </div>
+      </a>
+      <a href="#print-methods" class="hero-cat">
+        <div class="hero-cat-icon"><i class="fas fa-print"></i></div>
+        <div class="hero-cat-text">
+          <div class="hero-cat-name">常見印製工法</div>
+          <div class="hero-cat-sub">DTF · DTG · 網版 · 熱升華</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- 衣服訂製快速流程 -->
+<section id="quick-steps">
+  <div class="container">
+    <div class="text-center fade-up" style="margin-bottom:28px">
+      <div class="section-tag">HOW IT WORKS</div>
+      <h2 class="section-title" style="font-size:clamp(1.3rem,3vw,1.9rem)">衣服訂製快速流程</h2>
+    </div>
+    <div class="qs-grid fade-up">
+
+      <!-- Step 1 -->
+      <div class="qs-card">
+        <div class="qs-num">1</div>
+        <div class="qs-icon"><i class="fas fa-tshirt"></i></div>
+        <div class="qs-label">挑選服飾品牌</div>
+        <div class="qs-chips">
+          <span>Gildan</span>
+          <span>Printstar</span>
+          <span>United Athle</span>
+          <span class="more">+6 品牌</span>
+        </div>
+        <div class="qs-other">T恤・帽T・Polo衫・外套</div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="qs-card">
+        <div class="qs-num">2</div>
+        <div class="qs-icon"><i class="fas fa-print"></i></div>
+        <div class="qs-label">選擇印刷方式</div>
+        <div class="qs-best"><i class="fas fa-bolt"></i> DTF 熱轉印 <span class="badge">最快・最便宜</span></div>
+        <div class="qs-other">DTG・網版印刷・熱升華</div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="qs-card">
+        <div class="qs-num">3</div>
+        <div class="qs-icon"><i class="fas fa-box-open"></i></div>
+        <div class="qs-label">確認數量</div>
+        <div class="qs-big">1件起印</div>
+        <div class="qs-other">無最低限制<br>量多更優惠</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- CLOTHING -->
+<section id="clothing">
+  <div class="container">
+    <div class="text-center fade-up">
+      <div class="section-tag">CLOTHING</div>
+      <h2 class="section-title">服飾訂製</h2>
+      <p class="section-sub">選擇品牌與款式，搭配最適合的印製工法，打造專屬服飾</p>
+    </div>
+
+    <!-- Brand Selection -->
+    <div class="fade-up" style="margin-bottom:52px">
+      <h3 style="font-size:1.1rem;font-weight:700;margin-bottom:20px;color:var(--t2)">選擇品牌</h3>
+      <div class="brand-tabs">
+        <button class="brand-tab active" data-brand="gildan">
+          <img src="https://www.inni.com.tw/Uploads/Brand/01-Gildan%20%E5%90%89%E7%88%BE%E7%99%BB/637600463697847599.jpg" alt="Gildan" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+          <span class="brand-tab-text" style="display:none">Gildan</span>
+        </button>
+        <button class="brand-tab" data-brand="north-harbour">
+          <img src="https://www.inni.com.tw/Uploads/Brand/16-North%20Harbour/637577935502041688.jpg" alt="North Harbour" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+          <span class="brand-tab-text" style="display:none">North Harbour</span>
+        </button>
+        <button class="brand-tab" data-brand="crossrunner">
+          <img src="https://www.inni.com.tw/Uploads/Brand/06-Crossrunner%20%E5%B8%8C%E7%88%BE/637600514834521633.jpg" alt="Crossrunner" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+          <span class="brand-tab-text" style="display:none">Crossrunner</span>
+        </button>
+        <button class="brand-tab" data-brand="printstar">
+          <img src="https://www.toms-taiwan.com/img/printstar/img_main_logo_printstart.png" alt="Printstar" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+          <span class="brand-tab-text" style="display:none">Printstar</span>
+        </button>
+        <button class="brand-tab" data-brand="glimmer">
+          <img src="https://www.toms-taiwan.com/img/glimmer/img_main_logo_glimmer.png" alt="Glimmer" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+          <span class="brand-tab-text" style="display:none">Glimmer</span>
+        </button>
+        <button class="brand-tab" data-brand="united-athle">
+          <img src="united-athle-logo.webp" alt="United Athle" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+          <span class="brand-tab-text" style="display:none">United Athle</span>
+        </button>
+        <button class="brand-tab" data-brand="ultra">
+          <span class="brand-tab-text">ULTRA<br>APPAREL</span>
+        </button>
+        <button class="brand-tab" data-brand="arrive">
+          <span class="brand-tab-text">Arrive<br>Guide</span>
+        </button>
+        <button class="brand-tab" data-brand="custom">
+          <div class="brand-tab-custom"><i class="fas fa-box-open" style="font-size:1.2rem;display:block;margin-bottom:4px;color:var(--blue)"></i>自備布料</div>
+        </button>
+      </div>
+
+      <!-- Gildan -->
+      <div class="brand-content active" id="brand-gildan">
+        <div class="brand-list">
+          <div class="brand-list-item"><i class="fas fa-tshirt"></i><span class="name">76000 重磅素面T恤</span><span class="spec">100% 棉｜S–2XL｜195g</span></div>
+          <div class="brand-list-item"><i class="fas fa-tshirt"></i><span class="name">63000 輕磅素面T恤</span><span class="spec">100% 棉（環紡）｜S–2XL｜160g</span></div>
+          <div class="brand-list-item"><i class="fas fa-tshirt"></i><span class="name">3700 素面大學T</span><span class="spec">棉/聚酯混紡｜S–2XL｜280g</span></div>
+          <div class="brand-list-item"><i class="fas fa-user-tie"></i><span class="name">HA00 連帽衛衣</span><span class="spec">連帽款｜S–2XL</span></div>
+          <div class="brand-list-item"><i class="fas fa-user-tie"></i><span class="name">88000 重磅帽T</span><span class="spec">厚磅保暖｜S–2XL</span></div>
+        </div>
+      </div>
+
+      <!-- North Harbour -->
+      <div class="brand-content" id="brand-north-harbour">
+        <div class="brand-list">
+          <div class="brand-list-item"><i class="fas fa-tshirt"></i><span class="name">6100 頂級重磅純棉T恤</span><span class="spec">精梳棉｜XS–2XL</span></div>
+          <div class="brand-list-item"><i class="fas fa-tshirt"></i><span class="name">8000 MITEE 頂級柔棉T恤</span><span class="spec">精梳棉｜XS–3XL｜200g</span></div>
+          <div class="brand-list-item"><i class="fas fa-tshirt"></i><span class="name">6240 重磅寬版落肩T恤</span><span class="spec">精梳棉｜S–2XL</span></div>
+          <div class="brand-list-item"><i class="fas fa-user-tie"></i><span class="name">9000 抗寒大學T</span><span class="spec">棉/聚酯｜XS–3XL｜300g</span></div>
+          <div class="brand-list-item"><i class="fas fa-user-tie"></i><span class="name">9500 抗寒連帽上衣</span><span class="spec">帽T款｜XS–3XL</span></div>
+          <div class="brand-list-item"><i class="fas fa-running"></i><span class="name">1300 戶外機能外套</span><span class="spec">輕量機能｜多尺寸</span></div>
+        </div>
+      </div>
+
+      <!-- Crossrunner -->
+      <div class="brand-content" id="brand-crossrunner">
+        <div class="brand-list">
+          <div class="brand-list-item"><i class="fas fa-running"></i><span class="name">CRR-600 吸濕排汗T恤</span><span class="spec">100% 聚酯｜XS–4XL</span></div>
+          <div class="brand-list-item"><i class="fas fa-running"></i><span class="name">CRR-300 運動POLO衫</span><span class="spec">吸排快乾｜XS–3XL</span></div>
+          <div class="brand-list-item"><i class="fas fa-running"></i><span class="name">CRR-400 運動背心</span><span class="spec">輕量透氣｜XS–3XL</span></div>
+          <div class="brand-list-item"><i class="fas fa-running"></i><span class="name">CRR-800 長袖吸排T恤</span><span class="spec">長袖防曬｜XS–3XL</span></div>
+        </div>
+      </div>
+
+      <!-- Printstar -->
+      <div class="brand-content" id="brand-printstar">
+        <div class="brand-list">
+          <div class="brand-list-item"><i class="fas fa-tshirt"></i><span class="name">00085-CVT 全棉圓領T恤</span><span class="spec">66色｜多尺碼含童女裝</span></div>
+          <div class="brand-list-item"><i class="fas fa-tshirt"></i><span class="name">00148-HVT 超重磅圓領T恤</span><span class="spec">8色｜S–3XL</span></div>
+          <div class="brand-list-item"><i class="fas fa-tshirt"></i><span class="name">00083-BBT 輕盈圓領T恤</span><span class="spec">23色｜含童裝</span></div>
+          <div class="brand-list-item"><i class="fas fa-tshirt"></i><span class="name">00113-BCV 落肩圓領T恤</span><span class="spec">7色｜S–2XL</span></div>
+          <div class="brand-list-item"><i class="fas fa-user-tie"></i><span class="name">00219-MLC 全棉大學T恤</span><span class="spec">15色｜含童女裝</span></div>
+          <div class="brand-list-item"><i class="fas fa-user-tie"></i><span class="name">00216-MLH 全棉連帽T恤</span><span class="spec">15色｜含童女裝</span></div>
+        </div>
+      </div>
+
+      <!-- Glimmer -->
+      <div class="brand-content" id="brand-glimmer">
+        <div class="brand-list">
+          <div class="brand-list-item"><i class="fas fa-sun"></i><span class="name">00300-ACT 抗UV機能T恤</span><span class="spec">42色｜含童女裝</span></div>
+          <div class="brand-list-item"><i class="fas fa-sun"></i><span class="name">00302-ADP 抗UV機能POLO衫</span><span class="spec">29色｜含童女裝</span></div>
+          <div class="brand-list-item"><i class="fas fa-sun"></i><span class="name">00350-AIT 抗UV舒適T恤</span><span class="spec">15色｜含童女裝</span></div>
+          <div class="brand-list-item"><i class="fas fa-user-tie"></i><span class="name">00346-AFC 刷毛大學T恤</span><span class="spec">4色｜秋冬保暖</span></div>
+          <div class="brand-list-item"><i class="fas fa-user-tie"></i><span class="name">00347-AFH 刷毛連帽T恤</span><span class="spec">4色｜帽T款</span></div>
+        </div>
+      </div>
+
+      <!-- United Athle -->
+      <div class="brand-content" id="brand-united-athle">
+        <div class="brand-list">
+          <div class="brand-list-item"><i class="fas fa-tshirt"></i><span class="name">5001 重磅圓領T恤</span><span class="spec">100% 棉｜50+色</span></div>
+          <div class="brand-list-item"><i class="fas fa-tshirt"></i><span class="name">5942 DRY 排汗T恤</span><span class="spec">吸濕快乾｜20+色</span></div>
+          <div class="brand-list-item"><i class="fas fa-user-tie"></i><span class="name">5214 連帽上衣 帽T</span><span class="spec">棉混紡｜多尺碼</span></div>
+          <div class="brand-list-item"><i class="fas fa-user-tie"></i><span class="name">5515 連帽拉鍊外套</span><span class="spec">拉鍊帽T｜多尺碼</span></div>
+        </div>
+      </div>
+
+      <!-- ULTRA APPAREL -->
+      <div class="brand-content" id="brand-ultra">
+        <div class="brand-list">
+          <div class="brand-list-item"><i class="fas fa-tshirt"></i><span class="name">UA2350 復古重磅水洗T恤</span><span class="spec">100% 棉 235g｜寬版落肩</span></div>
+          <div class="brand-list-item"><i class="fas fa-comment-dots"></i><span class="name">更多款式</span><span class="spec">請洽客服詢問</span></div>
+        </div>
+      </div>
+
+      <!-- Arrive Guide -->
+      <div class="brand-content" id="brand-arrive">
+        <div class="brand-list">
+          <div class="brand-list-item"><i class="fas fa-tshirt"></i><span class="name">AG18000 頂級精梳棉T恤</span><span class="spec">精梳棉｜台灣市場特製</span></div>
+          <div class="brand-list-item"><i class="fas fa-tshirt"></i><span class="name">S&amp;S 系列</span><span class="spec">請洽客服完整款式</span></div>
+          <div class="brand-list-item"><i class="fas fa-tshirt"></i><span class="name">A&amp;W 系列</span><span class="spec">請洽客服完整款式</span></div>
+        </div>
+      </div>
+
+      <!-- 自備布料 -->
+      <div class="brand-content" id="brand-custom">
+        <div class="brand-list">
+          <div class="brand-list-item"><i class="fas fa-box-open"></i><span class="name">自備布料來料加工</span><span class="spec">DTG・DTF・網版｜歡迎洽詢</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Print Methods Accordion -->
+    <div class="fade-up" id="print-methods">
+      <h3 style="font-size:1.1rem;font-weight:700;margin-bottom:16px;color:var(--t2)">印製工法</h3>
+      <div class="method-accordion">
+
+        <div class="method-item open">
+          <div class="method-header" onclick="this.parentElement.classList.toggle('open')">
+            <div class="method-hicon"><i class="fas fa-bolt"></i></div>
+            <div class="method-hname">DTF 熱轉印 <span style="font-size:.72rem;color:var(--blue);font-weight:600;margin-left:6px">★ 最快・最便宜</span></div>
+            <div class="method-htags"><span class="method-htag">1件起印</span><span class="method-htag">全色域</span><span class="method-htag">耐洗</span></div>
+            <i class="fas fa-chevron-down method-harrow"></i>
+          </div>
+          <div class="method-body">色彩飽和、細節精準，適合複雜圖案與漸層設計，不限顏色數量，最低 1 件即可生產，速度快、價格親民，是最多客戶選擇的工法。</div>
+        </div>
+
+        <div class="method-item">
+          <div class="method-header" onclick="this.parentElement.classList.toggle('open')">
+            <div class="method-hicon"><i class="fas fa-print"></i></div>
+            <div class="method-hname">DTG 數位印花</div>
+            <div class="method-htags"><span class="method-htag">1件起印</span><span class="method-htag">照片級</span><span class="method-htag">深淺色均可</span></div>
+            <i class="fas fa-chevron-down method-harrow"></i>
+          </div>
+          <div class="method-body">直接噴印於布料，質感細膩自然，適合精緻圖像與個人化少量訂製，深色與淺色布料均可使用。</div>
+        </div>
+
+        <div class="method-item">
+          <div class="method-header" onclick="this.parentElement.classList.toggle('open')">
+            <div class="method-hicon"><i class="fas fa-layer-group"></i></div>
+            <div class="method-hname">網版印刷</div>
+            <div class="method-htags"><span class="method-htag">大量優惠</span><span class="method-htag">色彩飽和</span><span class="method-htag">耐用</span></div>
+            <i class="fas fa-chevron-down method-harrow"></i>
+          </div>
+          <div class="method-body">傳統經典工法，色彩鮮豔持久，適合顏色數少、大量印製的訂單，單價隨數量增加明顯降低。</div>
+        </div>
+
+        <div class="method-item">
+          <div class="method-header" onclick="this.parentElement.classList.toggle('open')">
+            <div class="method-hicon"><i class="fas fa-fire"></i></div>
+            <div class="method-hname">熱升華印製</div>
+            <div class="method-htags"><span class="method-htag">全彩滿版</span><span class="method-htag">淺色布料</span><span class="method-htag">持久</span></div>
+            <i class="fas fa-chevron-down method-harrow"></i>
+          </div>
+          <div class="method-body">適合全白或淺色聚酯布料，色彩深入纖維，持久不褪色，全彩滿版印製效果極佳，適合運動衣、客製化制服。</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="container">
+    <div class="text-center fade-up">
+      <div class="section-tag">PROCESS</div>
+      <h2 class="section-title">簡單四步驟</h2>
+      <p class="section-sub">從詢價到收貨，全程透明高效</p>
+    </div>
+    <div class="process-steps fade-up">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h4>提供需求</h4>
+        <p>圖檔、數量、尺寸、材質需求</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h4>確認報價</h4>
+        <p>快速回覆報價，確認所有細節</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h4>付款</h4>
+        <p>確認報價後完成付款，正式開單生產</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h4>出貨交付</h4>
+        <p>品管完成安排出貨</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <div class="text-center fade-up">
+      <div class="section-tag">FAQ</div>
+      <h2 class="section-title">常見問題</h2>
+    </div>
+    <div class="faq-list fade-up">
+      <div class="faq-item">
+        <div class="faq-q">最低訂購量是多少？<i class="fas fa-plus"></i></div>
+        <div class="faq-a">服飾支援最低 1 件起印，不論個人客製化還是企業小量試版皆歡迎，不設最低訂購量限制。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">可以提供什麼格式的圖檔？<i class="fas fa-plus"></i></div>
+        <div class="faq-a">建議提供 AI、EPS、PDF 等向量格式，或解析度 300DPI 以上的 PNG 點陣圖。如需協助處理圖檔，歡迎告知。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">如何選擇印製工法？<i class="fas fa-plus"></i></div>
+        <div class="faq-a">可依圖案複雜度、布料材質、訂製數量等條件選擇。歡迎透過 LINE 聯繫，我們會為您推薦最適合的方式。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">交期大約需要多久？<i class="fas fa-plus"></i></div>
+        <div class="faq-a">依訂製內容需求及數量，通常為 7 ~ 30 個工作天。如有急件需求可提出討論，我們會盡力配合。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-inner fade-up">
+      <div class="section-tag" style="background:rgba(255,255,255,.2);color:#fff">CONTACT</div>
+      <h2>立即聯繫我們</h2>
+      <p>有印製需求或想詢問報價，歡迎透過以下方式聯繫，我們將盡快回覆</p>
+      <div class="contact-cards">
+        <a href="https://line.me/R/ti/p/%40001fobfn" target="_blank" class="contact-card">
+          <div class="contact-card-icon"><i class="fab fa-line"></i></div>
+          <div class="contact-card-body">
+            <h4>LINE 官方帳號</h4>
+            <p>即時回覆，最快速的詢問方式</p>
+            <span>加入好友 →</span>
+          </div>
+        </a>
+        <a href="https://m.me/BumaTech.tw" target="_blank" class="contact-card">
+          <div class="contact-card-icon"><i class="fab fa-facebook-messenger"></i></div>
+          <div class="contact-card-body">
+            <h4>Facebook Messenger</h4>
+            <p>BumaTech.tw 官方粉絲頁</p>
+            <span>傳送訊息 →</span>
+          </div>
+        </a>
+      </div>
+      <p class="contact-note">客服時間：週一至週五 10:30 ~ 18:30（國定假日休假）</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="logo.png" alt="布碼科技" class="footer-logo-img">
+        <p>專業服飾印製工廠，提供DTG數位印花、DTF熱轉印、網版印刷等全方位服飾印製服務，台灣工廠直營，品質保證。</p>
+        <div class="footer-social">
+          <a href="https://m.me/BumaTech.tw" target="_blank" class="social-btn"><i class="fab fa-facebook-messenger"></i></a>
+          <a href="https://line.me/R/ti/p/%40001fobfn" target="_blank" class="social-btn"><i class="fab fa-line"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>服務項目</h5>
+        <ul>
+          <li><a href="#clothing">服飾訂製</a></li>
+          <li><a href="#process">訂製流程</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>快速連結</h5>
+        <ul>
+          <li><a href="#faq">常見問題</a></li>
+          <li><a href="#contact">聯絡我們</a></li>
+          <li><a href="https://line.me/R/ti/p/%40001fobfn" target="_blank">LINE 詢價</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 布碼科技 Buma Tech. All rights reserved.</p>
+      <p>Taiwan Factory Direct</p>
+    </div>
+  </div>
+</footer>
+
+<div class="float-btns">
+  <a href="https://m.me/BumaTech.tw" target="_blank" class="float-btn float-fb"><i class="fab fa-facebook-messenger"></i></a>
+  <a href="https://line.me/R/ti/p/%40001fobfn" target="_blank" class="float-btn float-line"><i class="fab fa-line"></i></a>
+</div>
+
+<script>
+// Nav scroll
+const navbar=document.getElementById('navbar');
+window.addEventListener('scroll',()=>navbar.classList.toggle('scrolled',scrollY>30));
+
+// Mobile menu
+const hamburger=document.getElementById('hamburger');
+const mobileMenu=document.getElementById('mobileMenu');
+hamburger.addEventListener('click',()=>mobileMenu.classList.toggle('open'));
+mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>mobileMenu.classList.remove('open')));
+
+// Brand tabs
+document.querySelectorAll('.brand-tab').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.brand-tab').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('.brand-content').forEach(c=>c.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('brand-'+btn.dataset.brand).classList.add('active');
+  });
+});
+
+// FAQ
+document.querySelectorAll('.faq-q').forEach(q=>{
+  q.addEventListener('click',()=>{
+    const item=q.parentElement;
+    const wasOpen=item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+    if(!wasOpen)item.classList.add('open');
+  });
+});
+
+// Fade up
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target);}});
+},{threshold:0.1});
+document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>
