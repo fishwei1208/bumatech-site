@@ -23,3 +23,12 @@ jobs:
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: 3a21160f8129aba38af5fb0cae3da25f
+      - name: Add Custom Domain buma-tech.com
+        run: |
+          curl -s -X POST \
+            "https://api.cloudflare.com/client/v4/accounts/3a21160f8129aba38af5fb0cae3da25f/pages/projects/bumatech-site/domains" \
+            -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+            -H "Content-Type: application/json" \
+            -d '{"name":"buma-tech.com"}' | cat || true
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
