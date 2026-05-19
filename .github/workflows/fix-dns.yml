@@ -1,0 +1,50 @@
+name: Fix DNS for buma-tech.com
+on:
+  workflow_dispatch:
+jobs:
+  fix-dns:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Zone ID and Fix DNS
+        run: |
+          # Get the zone ID for buma-tech.com
+          ZONE_ID=$(curl -s "https://api.cloudflare.com/client/v4/zones?name=buma-tech.com" \
+            -H "Authorization: Bearer $CF_TOKEN" \
+            -H "Content-Type: application/json" | jq -r '.result[0].id')
+          echo "Zone ID: $ZONE_ID"
+
+          # List all DNS records
+          echo "=== Current DNS Records ==="
+          DNS_RECORDS=$(curl -s "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \
+            -H "Authorization: Bearer $CF_TOKEN" \
+            -H "Content-Type: application/json")
+          echo "$DNS_RECORDS" | jq '.result[] | {id, type, name, content}'
+
+          # Delete any CNAME or A records for buma-tech.com (root domain)
+          ROOT_RECORDS=$(echo "$DNS_RECORDS" | jq -r '.result[] | select(.name == "buma-tech.com") | select(.type == "CNAME" or .type == "A") | .id')
+          for RECORD_ID in $ROOT_RECORDS; do
+            echo "Deleting record $RECORD_ID..."
+            curl -s -X DELETE "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/$RECORD_ID" \
+              -H "Authorization: Bearer $CF_TOKEN" \
+              -H "Content-Type: application/json"
+          done
+
+          # Add CNAME record pointing to Cloudflare Pages
+          echo "=== Adding CNAME for buma-tech.com ==="
+          curl -s -X POST "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \
+            -H "Authorization: Bearer $CF_TOKEN" \
+            -H "Content-Type: application/json" \
+            -d '{"type":"CNAME","name":"buma-tech.com","content":"bumatech-site.pages.dev","proxied":true}'
+
+          # Also handle www subdomain
+          WWW_RECORDS=$(echo "$DNS_RECORDS" | jq -r '.result[] | select(.name == "www.buma-tech.com") | select(.type == "CNAME" or .type == "A") | .id')
+          for RECORD_ID in $WWW_RECORDS; do
+            echo "Deleting www record $RECORD_ID..."
+            curl -s -X DELETE "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/$RECORD_ID" \
+              -H "Authorization: Bearer $CF_TOKEN" \
+              -H "Content-Type: application/json"
+          done
+
+          echo "=== Done ==="
+        env:
+          CF_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
